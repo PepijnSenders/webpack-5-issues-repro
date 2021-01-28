@@ -5,10 +5,11 @@ const path = require('path');
 const createComponentContents = (
   module
 ) => `import React, { useState, useEffect } from 'react';
+import dynamic from 'next/dynamic';
 
 ${module.dependencies
   .map((dependency) => {
-    return `import ${dependency.name} from './${dependency.name}';`;
+    return `const ${dependency.name} = dynamic(() => import(/* webpackChunkName: "${dependency.name}" */ './${dependency.name}'));`;
   })
   .join('\n')}
 

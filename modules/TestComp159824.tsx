@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import dynamic from 'next/dynamic';
 
-import TestComp337112 from './TestComp337112';
-import TestComp939621 from './TestComp939621';
+const TestComp337112 = dynamic(() => import(/* webpackChunkName: "TestComp337112" */ './TestComp337112'));
+const TestComp939621 = dynamic(() => import(/* webpackChunkName: "TestComp939621" */ './TestComp939621'));
 
 const TestComp159824: React.FC = () => {
   const [click, setClick] = useState<boolean>(false);
